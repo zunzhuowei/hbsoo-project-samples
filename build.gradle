@@ -1,0 +1,104 @@
+buildscript {
+    ext {
+        springBootVersion = "2.5.3"
+    }
+    repositories {
+        mavenLocal{
+            url = new File("E:\\maven\\repository").exists() ?
+                    new File("E:\\maven\\repository").absolutePath :
+                    'file://' + new File(System.getProperty('user.home'), '.m2/repository').absolutePath
+        }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+
+allprojects {
+    group 'com.hbsoo.samples'
+    version '1.0.0'
+
+    apply plugin: 'groovy'
+    apply plugin: 'java'
+    apply plugin: 'maven-publish'
+    //apply plugin: 'idea'
+    //apply plugin: 'io.spring.dependency-management'
+
+}
+
+// 子项目模块配置
+subprojects {
+    sourceCompatibility = '1.8'
+
+    ext{
+        localMavenDir =
+                new File("E:\\maven\\repository").exists() ?
+                        new File("E:\\maven\\repository").absolutePath :
+                        'file://' + new File(System.getProperty('user.home'), '.m2/repository').absolutePath
+        profile = System.getProperty("profile") ?: "dev"
+        junit = [group: 'junit', name: 'junit', version: '4.12']
+        commons = [group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0']
+        commonsio = [group: 'commons-io', name: 'commons-io', version: '2.11.0']
+        nettyall = [group: 'io.netty', name: 'netty-all', version: '4.1.66.Final']
+        springboot = [group: 'org.springframework.boot', name: 'spring-boot', version: '2.5.3']
+        spring_boot_autoconfigure = [group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: '2.5.3']
+        spock='org.spockframework:spock-core:2.0-M5-groovy-3.0'
+        spock_junit4='org.spockframework:spock-junit4:2.0-M5-groovy-3.0'
+    }
+
+    jar {
+        manifest.attributes provider: 'gradle'
+    }
+
+    repositories {
+        mavenLocal{url localMavenDir}
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        mavenCentral()
+    }
+
+
+    dependencies {
+        testImplementation group: 'junit', name: 'junit', version: '4.12'
+        implementation 'org.codehaus.groovy:groovy-all:2.3.11'
+        implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.32'
+        implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.5'
+        implementation group: 'org.yaml', name: 'snakeyaml', version: '1.29'
+        implementation group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
+        annotationProcessor 'org.projectlombok:lombok:1.18.20'
+        implementation spring_boot_autoconfigure
+        spock='org.spockframework:spock-core:2.0-M5-groovy-3.0'
+        spock_junit4='org.spockframework:spock-junit4:2.0-M5-groovy-3.0'
+    }
+
+    // 该模块使用compileGroovy任务对Java和Groovy代码进行联合编译。
+    sourceSets {
+        main.groovy.srcDirs += "src/main/java"
+        main.java.srcDirs = []
+    }
+
+    configurations {
+        println "--------------" + jar + "---------------"
+    }
+
+    // 发布jar到maven
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                from components.java
+            }
+        }
+        repositories {
+            mavenLocal {
+                url = localMavenDir
+            }
+            maven {
+                url = localMavenDir
+            }
+        }
+    }
+
+
+}

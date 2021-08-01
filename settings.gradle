@@ -1,0 +1,3 @@
+rootProject.name = 'hbsoo-project-samples'
+include 'hbsoo-server-samples'
+

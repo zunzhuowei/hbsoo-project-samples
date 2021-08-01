@@ -1,6 +1,7 @@
 package com.hbsoo.samples
 
-import com.hbsoo.handler.message.router.StringAbstractHandler
+
+import com.hbsoo.handler.message.router.adapter.StringMessageRouterAdapter
 import com.hbsoo.msg.annotation.StrHandler
 import com.hbsoo.msg.model.HBSMessage
 import com.hbsoo.msg.model.StrMsgHeader
@@ -10,7 +11,7 @@ import com.hbsoo.msg.model.StrMsgHeader
  *
  */
 @StrHandler(value = [1])
-class TestStringRouter extends StringAbstractHandler {
+class TestStringRouter extends StringMessageRouterAdapter {
 
 
     @Override

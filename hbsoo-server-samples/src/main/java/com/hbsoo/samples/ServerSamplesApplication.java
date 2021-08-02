@@ -16,7 +16,7 @@ public class ServerSamplesApplication {
         final ConfigurableApplicationContext context = SpringApplication.run(ServerSamplesApplication.class, args);
         final HbsooServer hbsooServer = context.getBean(HbsooServer.class);
         hbsooServer.create(1, 2)
-                .protocolType(ServerProtocolType.HTTP)
+                .protocolType(ServerProtocolType.STRING)
                 //.start(5152);
                 .start(7777);
 

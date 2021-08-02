@@ -1,0 +1,10 @@
+apply plugin: 'org.springframework.boot'
+
+
+dependencies {
+    implementation junit
+    implementation nettyall
+    implementation springboot
+
+    implementation group: 'com.hbsoo', name: 'hbsoo-netty-client', version: '1.0.0'
+}

@@ -1,0 +1,9 @@
+#hbsoo:
+#  netty:
+#    server:
+#      port: 5152
+#      bossThreads: 1
+#      workerThreads: 2
+#      handlerTypes:
+#        - STRING
+#        - HTTP

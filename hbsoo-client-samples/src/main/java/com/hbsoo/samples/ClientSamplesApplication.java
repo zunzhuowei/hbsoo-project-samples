@@ -33,7 +33,7 @@ public class ClientSamplesApplication {
                 try {
                     String msg = console.readLine();
                     if (msg == null || msg.trim().equals("")) {
-                        break;
+                        continue;
                     } else if ("bye".equals(msg.toLowerCase())) {
 
                         break;

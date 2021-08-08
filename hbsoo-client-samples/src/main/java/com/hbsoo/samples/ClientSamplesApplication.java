@@ -45,6 +45,7 @@ public class ClientSamplesApplication {
                         HBSMessage<String> message = new HBSMessage<>();
                         MsgHeader msgHeader = new StrMsgHeader();
                         msgHeader.setMsgLen(msg.getBytes().length);
+                        msgHeader.setMsgType((short) 1);
                         message.setHeader(msgHeader).setContent(msg);
                         ch.writeAndFlush(message);
                     }

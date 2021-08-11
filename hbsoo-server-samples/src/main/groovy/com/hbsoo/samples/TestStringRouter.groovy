@@ -15,7 +15,7 @@ class TestStringRouter extends StringMessageRouterAdapter {
 
 
     @Override
-    protected HBSMessage<String> handler(int msgType, String content) {
+    protected void handler(int msgType, String content) {
         HBSMessage<String> message = new HBSMessage<>()
         message.content = "haha"
 
@@ -25,7 +25,7 @@ class TestStringRouter extends StringMessageRouterAdapter {
         header.setVersion(1 as short)
         header.setMsgLen(message.content.getBytes().length)
         message.header = header
-        message
+        sendMsg(message)
     }
 
 

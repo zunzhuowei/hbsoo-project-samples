@@ -13,9 +13,8 @@ class StringMessageRouter extends StringMessageRouterAdapter {
 
 
     @Override
-    protected HBSMessage<String> handler(int i, String s) {
+    protected void handler(int i, String s) {
         println "StringMessageRouter ==::" + s
-        return null
     }
 
 }

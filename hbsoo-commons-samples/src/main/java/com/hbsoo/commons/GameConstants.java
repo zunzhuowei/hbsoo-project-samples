@@ -11,6 +11,12 @@ public interface GameConstants {
 
     }
 
+    interface H2C {
+        int LOGIN = 1000;
+        int JOIN_ROOM = 1001;
+
+    }
+
     interface H2R {
         int LOGIN = 1000;
         int JOIN_ROOM = 1001;
@@ -18,7 +24,8 @@ public interface GameConstants {
     }
 
     interface R2H {
-
+        int LOGIN = 1000;
+        int JOIN_ROOM = 1001;
     }
 
 }

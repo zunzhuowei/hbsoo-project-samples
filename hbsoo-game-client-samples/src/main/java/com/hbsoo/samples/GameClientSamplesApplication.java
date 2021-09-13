@@ -3,16 +3,13 @@ package com.hbsoo.samples;
 import com.hbsoo.client.HbsooClient;
 import com.hbsoo.commons.GameConstants;
 import com.hbsoo.commons.HBSMessageHolder;
-import com.game.commons.enties.req.LoginEntity;
+import com.game.commons.enties.c2h.req.LoginEntity;
 import com.hbsoo.handler.constants.ClientProtocolType;
 import com.hbsoo.msg.model.HBSMessage;
 import io.netty.channel.Channel;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 
 /**
  * Created by zun.wei on 2021/8/2.

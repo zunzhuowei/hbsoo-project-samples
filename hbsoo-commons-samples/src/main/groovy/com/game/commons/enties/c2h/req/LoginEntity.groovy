@@ -1,4 +1,4 @@
-package com.game.commons.enties.req;
+package com.game.commons.enties.c2h.req;
 
 
 /**

@@ -47,6 +47,7 @@ subprojects {
         spring_boot_autoconfigure = [group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: '2.5.3']
         spock='org.spockframework:spock-core:2.0-M5-groovy-3.0'
         spock_junit4='org.spockframework:spock-junit4:2.0-M5-groovy-3.0'
+        fastjson='com.alibaba:fastjson:1.2.78'
     }
 
     jar {
@@ -69,8 +70,7 @@ subprojects {
         implementation group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
         annotationProcessor 'org.projectlombok:lombok:1.18.20'
         implementation spring_boot_autoconfigure
-        spock='org.spockframework:spock-core:2.0-M5-groovy-3.0'
-        spock_junit4='org.spockframework:spock-junit4:2.0-M5-groovy-3.0'
+        implementation fastjson
     }
 
     // 该模块使用compileGroovy任务对Java和Groovy代码进行联合编译。

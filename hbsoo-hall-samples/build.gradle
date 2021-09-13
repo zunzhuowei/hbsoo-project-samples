@@ -1,0 +1,12 @@
+apply plugin: 'org.springframework.boot'
+
+
+dependencies {
+    implementation junit
+    implementation nettyall
+    implementation springboot
+    implementation project(':hbsoo-commons-samples')
+    implementation group: 'com.hbsoo', name: 'hbsoo-netty-server', version: '1.0.0'
+    implementation group: 'com.hbsoo', name: 'hbsoo-game-hall', version: '1.0.0'
+}
+

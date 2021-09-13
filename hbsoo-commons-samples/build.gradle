@@ -1,0 +1,5 @@
+
+
+dependencies {
+    implementation group: 'com.hbsoo', name: 'hbsoo-netty-message', version: '1.0.0'
+}

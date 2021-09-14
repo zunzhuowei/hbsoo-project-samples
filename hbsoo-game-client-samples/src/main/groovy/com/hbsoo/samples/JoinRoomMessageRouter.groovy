@@ -1,7 +1,7 @@
 package com.hbsoo.samples
 
 import com.alibaba.fastjson.JSON
-import com.game.commons.enties.c2h.resp.LoginRespEntity
+import com.game.commons.enties.c2h.resp.LoginResp
 import com.hbsoo.commons.GameConstants
 import com.hbsoo.handler.message.router.adapter.StringMessageRouterAdapter
 import com.hbsoo.msg.annotation.StrHandler
@@ -17,7 +17,7 @@ class JoinRoomMessageRouter extends StringMessageRouterAdapter {
     @Override
     protected void handler(int msgType, String content) {
         println "JoinRoomMessageRouter ==::" + content
-        def loginRespEntity = JSON.parseObject(content, LoginRespEntity.class)
+        def loginRespEntity = JSON.parseObject(content, LoginResp.class)
 
     }
 

@@ -1,7 +1,6 @@
-package com.hbsoo.hall.biz
+package com.hbsoo.hall.biz.handler
 
 import com.alibaba.fastjson.JSON
-import com.game.commons.enties.c2h.req.JoinRoomEntity
 import com.game.commons.enties.h2r.req.JoinRoomReq
 import com.hbsoo.commons.GameConstants
 import com.hbsoo.game.hall.msg.RoomMessageInformer
@@ -14,19 +13,19 @@ import org.springframework.beans.factory.annotation.Autowired
  *
  */
 @StrHandler([GameConstants.C2H.JOIN_ROOM])
-class JoinRoomHandler extends StringMessageRouterAdapter  {
+class C2HJoinRoomHandler extends StringMessageRouterAdapter  {
 
     @Autowired
     private RoomMessageInformer roomMessageInformer
 
     @Override
     protected void handler(int msgType, String content) {
-        JoinRoomEntity joinRoomEntity = JSON.parseObject(content, JoinRoomEntity.class)
+        com.game.commons.enties.c2h.req.JoinRoomReq joinRoomEntity = JSON.parseObject(content, com.game.commons.enties.c2h.req.JoinRoomReq.class)
         Long playerId = getAttr(channel, "playerId")
 
         JoinRoomReq joinRoomReq = new JoinRoomReq()
         joinRoomReq.gameType = joinRoomEntity.gameType
-        joinRoomReq.username = ""
+        joinRoomReq.username = "zhang san"
         joinRoomReq.score = 100L
         joinRoomReq.playerId = playerId
 

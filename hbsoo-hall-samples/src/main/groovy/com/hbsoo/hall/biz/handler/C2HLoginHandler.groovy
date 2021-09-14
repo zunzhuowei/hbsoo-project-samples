@@ -1,8 +1,8 @@
-package com.hbsoo.hall.biz
+package com.hbsoo.hall.biz.handler
 
 import com.alibaba.fastjson.JSON
-import com.game.commons.enties.c2h.req.LoginEntity
-import com.game.commons.enties.c2h.resp.LoginRespEntity
+import com.game.commons.enties.c2h.req.LoginEntityReq
+import com.game.commons.enties.c2h.resp.LoginResp
 import com.hbsoo.commons.GameConstants
 import com.hbsoo.commons.HBSMessageHolder
 import com.hbsoo.handler.message.router.adapter.StringMessageRouterAdapter
@@ -13,17 +13,17 @@ import com.hbsoo.msg.annotation.StrHandler
  *
  */
 @StrHandler([GameConstants.C2H.LOGIN])
-class LoginHandler extends StringMessageRouterAdapter  {
+class C2HLoginHandler extends StringMessageRouterAdapter  {
 
 
     @Override
     protected void handler(int msgType, String content) {
-        LoginEntity loginEntity = JSON.parseObject(content, LoginEntity.class)
+        LoginEntityReq loginEntity = JSON.parseObject(content, LoginEntityReq.class)
         loginEntity.username
         loginEntity.password
         setAttr(channel, "playerId", 1L)
 
-        LoginRespEntity loginRespEntity = new LoginRespEntity()
+        LoginResp loginRespEntity = new LoginResp()
         loginRespEntity.result = "ok"
         def message = HBSMessageHolder.make(GameConstants.H2C.LOGIN, loginRespEntity)
         sendMsg(message)

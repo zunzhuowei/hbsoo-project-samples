@@ -1,4 +1,4 @@
-package com.hbsoo.room
+package com.hbsoo.room.game.data
 
 import java.util.concurrent.ConcurrentHashMap
 
@@ -10,6 +10,7 @@ class Room {
 
     Long id
     String name;
+    int gameType
 
     Map<Long, Player> players = new ConcurrentHashMap<>()
 

@@ -6,13 +6,11 @@ package com.game.commons.enties.h2r.resp
  */
 class JoinRoomResp {
 
-    Long playerId
-
-    String username;
-
-    Long score
 
     int gameType
+
+    Long roomId
+
 
 
 }

@@ -3,7 +3,7 @@ package com.hbsoo.samples;
 import com.hbsoo.client.HbsooClient;
 import com.hbsoo.commons.GameConstants;
 import com.hbsoo.commons.HBSMessageHolder;
-import com.game.commons.enties.c2h.req.LoginEntity;
+import com.game.commons.enties.c2h.req.LoginEntityReq;
 import com.hbsoo.handler.constants.ClientProtocolType;
 import com.hbsoo.msg.model.HBSMessage;
 import io.netty.channel.Channel;
@@ -26,10 +26,10 @@ public class GameClientSamplesApplication {
                 .connect("127.0.0.1", 5555);
 
         // 登录服务器
-        LoginEntity loginEntity = new LoginEntity();
-        loginEntity.setUsername("zhangsan");
-        loginEntity.setPassword("123456");
-        final HBSMessage<String> message = HBSMessageHolder.make(GameConstants.C2H.LOGIN, loginEntity);
+        LoginEntityReq loginEntityReq = new LoginEntityReq();
+        loginEntityReq.setUsername("zhangsan");
+        loginEntityReq.setPassword("123456");
+        final HBSMessage<String> message = HBSMessageHolder.make(GameConstants.C2H.LOGIN, loginEntityReq);
         ch.writeAndFlush(message);
 
         /*try (BufferedReader console = new BufferedReader(new InputStreamReader(System.in))){

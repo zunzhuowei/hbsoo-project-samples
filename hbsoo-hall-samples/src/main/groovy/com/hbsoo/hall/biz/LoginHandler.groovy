@@ -21,7 +21,7 @@ class LoginHandler extends StringMessageRouterAdapter  {
         LoginEntity loginEntity = JSON.parseObject(content, LoginEntity.class)
         loginEntity.username
         loginEntity.password
-        super.setAttr(channel, "playerId", 1L)
+        setAttr(channel, "playerId", 1L)
 
         LoginRespEntity loginRespEntity = new LoginRespEntity()
         loginRespEntity.result = "ok"

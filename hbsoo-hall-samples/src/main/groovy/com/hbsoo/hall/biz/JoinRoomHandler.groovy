@@ -22,7 +22,7 @@ class JoinRoomHandler extends StringMessageRouterAdapter  {
     @Override
     protected void handler(int msgType, String content) {
         JoinRoomEntity joinRoomEntity = JSON.parseObject(content, JoinRoomEntity.class)
-        Long playerId = super.getAttr(channel, "playerId")
+        Long playerId = getAttr(channel, "playerId")
 
         JoinRoomReq joinRoomReq = new JoinRoomReq()
         joinRoomReq.gameType = joinRoomEntity.gameType

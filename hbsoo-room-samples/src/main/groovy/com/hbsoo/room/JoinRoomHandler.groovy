@@ -30,7 +30,6 @@ class JoinRoomHandler implements InnerMessageProcessor<JoinRoomReq> {
         println "JoinRoomHandler message = $message"
         JoinRoomResp joinRoomResp = new JoinRoomResp()
         joinRoomResp.playerId = 111L
-        joinRoomResp.score++
 
         String s = JSON.toJSONString(joinRoomResp)
         hallMessageInformer.send(GameConstants.R2H.JOIN_ROOM, s)

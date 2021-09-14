@@ -30,8 +30,7 @@ class JoinRoomHandler extends StringMessageRouterAdapter  {
         joinRoomReq.score = 100L
         joinRoomReq.playerId = playerId
 
-        String s = JSON.toJSONString(joinRoomReq)
-        roomMessageInformer.send(GameConstants.H2R.JOIN_ROOM, s)
+        roomMessageInformer.send(GameConstants.H2R.JOIN_ROOM, joinRoomReq)
 
 
         /*JoinRoomReq joinRoomReq = new JoinRoomReq()

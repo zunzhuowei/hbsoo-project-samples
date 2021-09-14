@@ -31,8 +31,7 @@ class JoinRoomHandler implements InnerMessageProcessor<JoinRoomReq> {
         JoinRoomResp joinRoomResp = new JoinRoomResp()
         joinRoomResp.playerId = 111L
 
-        String s = JSON.toJSONString(joinRoomResp)
-        hallMessageInformer.send(GameConstants.R2H.JOIN_ROOM, s)
+        hallMessageInformer.send(GameConstants.R2H.JOIN_ROOM, 1L, joinRoomResp)
 
     }
 

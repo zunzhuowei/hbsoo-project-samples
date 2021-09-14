@@ -31,6 +31,13 @@ class JoinRoomHandler implements InnerMessageProcessor<JoinRoomReq> {
         JoinRoomResp joinRoomResp = new JoinRoomResp()
         joinRoomResp.playerId = 111L
 
+        def optional = RoomHolder.getRoomByPlayerId(joinRoomResp.playerId)
+        //optional.orElseGet()
+
+
+        optional.ifPresent({room -> println "room = $room"})
+
+        RoomHolder.playerRoomMapping.put(joinRoomResp.playerId, 1L)
         hallMessageInformer.send(GameConstants.R2H.JOIN_ROOM, 1L, joinRoomResp)
 
     }

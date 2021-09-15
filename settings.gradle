@@ -5,4 +5,5 @@ include 'hbsoo-hall-samples'
 include 'hbsoo-room-samples'
 include 'hbsoo-commons-samples'
 include 'hbsoo-game-client-samples'
+include 'hbsoo-netty-proxy'
 

@@ -9,6 +9,7 @@ import com.hbsoo.game.commons.ServerHolder
 import com.hbsoo.game.commons.ServerType
 import com.hbsoo.handler.message.router.adapter.StringMessageRouterAdapter
 import com.hbsoo.msg.annotation.StrHandler
+import com.hbsoo.server.manager.ServerChannelManager
 import org.springframework.beans.factory.annotation.Autowired
 
 /**
@@ -30,6 +31,8 @@ class C2HLoginHandler extends StringMessageRouterAdapter  {
 
         Long playerId = getAttr(channel, "playerId")
         serverHolder.saveServerId(playerId, ServerType.HALL)
+        ServerChannelManager.regChannel(1L, channel)
+
         LoginResp loginRespEntity = new LoginResp()
         loginRespEntity.result = "ok"
         def message = HBSMessageHolder.make(GameConstants.H2C.LOGIN, loginRespEntity)

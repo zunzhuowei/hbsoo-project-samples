@@ -4,6 +4,7 @@ package com.hbsoo.room.handler
 import com.game.commons.enties.h2r.req.JoinRoomReq
 import com.game.commons.enties.h2r.resp.JoinRoomResp
 import com.hbsoo.commons.GameConstants
+import com.hbsoo.game.commons.ServerHolder
 import com.hbsoo.game.commons.ServerType
 import com.hbsoo.game.inner.InnerMessageProcessor
 import com.hbsoo.game.inner.InnerProcessor
@@ -25,6 +26,9 @@ class H2RJoinRoomHandler implements InnerMessageProcessor<JoinRoomReq> {
     @Autowired
     private MessageInformer messageInformer
 
+    @Autowired
+    private ServerHolder serverHolder
+
     @Override
     Class<JoinRoomReq> regMessage() {
         return JoinRoomReq.class
@@ -44,10 +48,11 @@ class H2RJoinRoomHandler implements InnerMessageProcessor<JoinRoomReq> {
         room.players.put(message.playerId, player)
 
         RoomHolder.playerRoomMapping.put(message.playerId, room.id)
-
+        serverHolder.saveServerId(message.playerId, ServerType.ROOM)
         JoinRoomResp joinRoomResp = new JoinRoomResp()
         joinRoomResp.gameType = message.gameType
         joinRoomResp.roomId = room.id
+        joinRoomResp.playerId = player.id
         messageInformer.send(ServerType.HALL, player.id, GameConstants.R2H.JOIN_ROOM, 1L, false, false, joinRoomResp)
 
 

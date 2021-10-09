@@ -11,6 +11,8 @@ class JoinRoomResp {
 
     Long roomId
 
+    Long playerId
+
 
 
 }

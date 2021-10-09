@@ -6,9 +6,9 @@ import com.game.commons.enties.h2r.resp.JoinRoomResp
 import com.hbsoo.commons.GameConstants
 import com.hbsoo.game.commons.ServerHolder
 import com.hbsoo.game.commons.ServerType
+import com.hbsoo.game.inner.InnerMessageInformer
 import com.hbsoo.game.inner.InnerMessageProcessor
 import com.hbsoo.game.inner.InnerProcessor
-import com.hbsoo.game.inner.MessageInformer
 import com.hbsoo.room.constants.RoomConstants
 import com.hbsoo.room.game.RoomHolder
 import com.hbsoo.room.game.data.Player
@@ -24,7 +24,7 @@ class H2RJoinRoomHandler implements InnerMessageProcessor<JoinRoomReq> {
 
 
     @Autowired
-    private MessageInformer messageInformer
+    private InnerMessageInformer messageInformer
 
     @Autowired
     private ServerHolder serverHolder
